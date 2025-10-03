@@ -1,13 +1,38 @@
 services:
-  keycloak:
-    image: quay.io/keycloak/keycloak:26.3
-    container_name: keycloak
+#  postgres:
+#    image: postgres:17-alpine
+#    container_name: dev-postgres
+#    restart: unless-stopped
+#    environment:
+#      POSTGRES_USER: todo
+#      POSTGRES_PASSWORD: todo
+#      POSTGRES_DB: todoapi
+#    ports:
+#      - "5432:5432"
+#    volumes:
+#      - postgres_data:/var/lib/postgresql/data
+
+  mssql:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: dev-mssql
+    restart: always
     environment:
-      KEYCLOAK_ADMIN: admin
-      KEYCLOAK_ADMIN_PASSWORD: admin
-    command: start-dev
+      ACCEPT_EULA: "Y"                # required
+      SA_PASSWORD: "Passw0rd" # SQL Server system admin password
     ports:
-      - "9999:8080"
+      - "1433:1433"                   # expose MSSQL on localhost:1433
+    volumes:
+      - mssql_data:/var/opt/mssql
+
+#  keycloak:
+#    image: quay.io/keycloak/keycloak:26.3
+#    container_name: keycloak
+#    environment:
+#      KEYCLOAK_ADMIN: admin
+#      KEYCLOAK_ADMIN_PASSWORD: admin
+#    command: start-dev
+#    ports:
+#      - "9999:8080"
 
   nginx:
     image: nginx:1.27-alpine
@@ -33,3 +58,5 @@ services:
 
 volumes:
   frontend_node_modules:
+  mssql_data:
+#  postgres_data:

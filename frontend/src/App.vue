@@ -1,22 +1,24 @@
 <script setup>
-import HelloWorld from "./components/HelloWorld.vue";
+import TodoBoard from "./components/TodoBoard.vue";
+import Toolbar from "./components/Toolbar.vue";
 </script>
 
 <template>
-  <HelloWorld msg="Vite + Vue" />
+  <Toolbar class="toolbar" />
+  <TodoBoard />
 </template>
 
 <style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+.toolbar {
+  min-width: 200px;
+  height: 100dvh;
+  background: transparent;
+  border: 2px solid;
+  color: red;
+  box-sizing: border-box;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
+
+.red {
+  color: red;
 }
 </style>

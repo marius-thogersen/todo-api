@@ -17,5 +17,5 @@ public class TodoItem {
     private String title;
     private String description;
 
-    private boolean completed;
+    private Status status;
 }

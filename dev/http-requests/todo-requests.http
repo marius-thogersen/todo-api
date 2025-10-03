@@ -1,0 +1,31 @@
+###
+GET localhost:8080
+
+###
+GET localhost:8080/api/v1/
+
+###
+GET localhost:8080/api/v1/todos/layout
+#GET localhost:8080/api/v1/layout
+
+###
+GET localhost:8080/api/v1/todos
+
+###
+GET localhost:8080/api/v1/todo/10002
+
+
+
+
+###
+POST http://localhost:8080/api/v1/add-todo
+Content-Type: application/json
+
+{
+    "title": "My awesome title",
+    "description": "My awesome description"
+}
+
+
+
+
